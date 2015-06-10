@@ -17,7 +17,6 @@ angular.module('lightApp')
         function initDir() {
           scope.navtracker = navtracker;
           scope.scrolled = false;
-          scope.closed = false;
           scope.navigation = false;
           var topBar = element[0].children[0],
               // navigation = element[0].children[1],

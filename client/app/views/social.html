@@ -3,11 +3,6 @@
 <div class="dnr-cornice" ></div>
 <div dnr-splitter class="dnr-splitter" >
   <div class="dnr-side-feed" ng-controller="FeedCtrl">
-    <div class="dnr-crown">
-      <div class="dnr-logo">
-        <h1 class="logo">Light.ly</h1>
-      </div>
-    </div>
     <div class="dnr-switch-bar">
       <ul class="dnr-social-nav-links">
         <li class="item1" tooltip="News feed" ng-click="changeFeed('news')" ng-class="{'active':activeFeed === 'news'}">
@@ -134,21 +129,9 @@
 
   <div class="dnr-social" dnr-document>
 
-    <div class="titlenav" ng-hide="scrolled" ng-class="{'closed': closed === true && navigation === false}">
-      <div class="dnr-burger" ng-click="titleNavBurger()">
-        <svg viewBox="0 0 24 24" class="icon">
-          <path d="M3,18h18v-2H3V18z M3,13h18v-2H3V13z M3,6v2h18V6H3z"></path>
-        </svg>
-      </div>
+    <div class="titlenav" ng-hide="scrolled">
       <div class="documenttitle">
         <h1><span ng-show="navtracker.group !== ''">{{navtracker.group}} - </span>{{navtracker.title}}</h1>
-      </div>
-      <div class="gototop">
-        <h5 ng-click="titleNavArrow()">
-          <svg viewBox="0 0 64 64" class="fcenter" ng-class="{'rotate': scrolled === true}">
-            <polygon points="32.002,15.512 3.57,44.784 7.381,48.487 32.002,23.137 56.623,48.488 60.43,44.784"/>
-          </svg>
-        </h5>
       </div>
     </div>
 
@@ -167,10 +150,10 @@
       </ul>
     </div>
 
-    <div class="dnr-social-scroll" ng-hide="closed">
+    <div class="dnr-social-scroll">
 
-      <div class="social-view" ui-view="" ng-hide="closed"></div>
-      <div class="social-banners" ng-hide="closed">
+      <div class="social-view" ui-view=""></div>
+      <div class="social-banners">
 
         <div class="bg-teal" style="width: 100%; height: 120px; margin-bottom: 10px;"></div>
         <div class="bg-lime" style="width: 100%; height: 120px; margin-bottom: 10px;"></div>
