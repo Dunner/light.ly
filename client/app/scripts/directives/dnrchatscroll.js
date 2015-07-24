@@ -1,4 +1,3 @@
-/*global Hamster:false */
 'use strict';
 
 /**
@@ -14,7 +13,7 @@ angular.module('lightApp')
       scope: true,
       link: function (scope, element) {
 
-        var Vlelems, nextY, last,
+        var Vlelems, last,
           notches = 0,
           scrollDiv = element[0].children[1],
           scrollBar = element[0].children[0],
@@ -67,51 +66,6 @@ angular.module('lightApp')
         }
 
         setTimeout(function(){init();},300);
-
-        scope.up = function () {
-          if (scope.currentIdY === 0) {return;/*scope.currentIdY = Vlelems.length;*/}
-          nextY = angular.element(Vlelems[scope.currentIdY-1]);
-          scope.currentIdY = scope.currentIdY-1;
-          scroll.scrollToY(scrollDiv, nextY[0], 0, 200);
-          updateScroll();
-        };
-
-        scope.down = function () {
-          if (scope.currentIdY===Vlelems.length-1) {return; /*scope.currentIdY = -1;*/}
-          nextY = angular.element(Vlelems[scope.currentIdY+1]);
-          scope.currentIdY = scope.currentIdY+1;
-          scroll.scrollToY(scrollDiv, nextY[0], 0, 200);
-          updateScroll();
-        };
-
-        scope.specificY = function (id) {
-          nextY = angular.element(Vlelems[id]);
-          scope.currentIdY = id;
-          scroll.scrollToY(scrollDiv, nextY[0], 0, 200);
-          updateScroll();
-        };
-
-        scope.jumpOne = function () {
-          setTimeout(function(){
-            nextY = angular.element(Vlelems[1]);
-            scope.currentIdY = 1;
-            scroll.scrollToY(scrollDiv, nextY[0], 0, 200);
-            updateScroll();
-          },500);
-        };
-
-        if(typeof Hamster !== undefined) {
-          new Hamster(element[0]).wheel(function(event, delta){
-            event.preventDefault();
-            if(delta>0) {
-              scope.up();
-            }
-            else {
-              scope.down();
-            }
-          });
-        }
-
       }
     };
   });

@@ -8,22 +8,25 @@
  * Controller of the lightApp
  */
 angular.module('lightApp')
-  .controller('UserCtrl', function ($scope, $resource, $stateParams) {
+  .controller('UserCtrl', function ($scope, $resource, $stateParams, BuddyService, MessageService) {
 
+    $scope.MessageService = MessageService;
     var routes = {
-      users: $resource('/api/users/single/:slug', {slug: '@slug'}),
+      users: $resource('/api/users/single/:id', {id: '@id'}),
       addFriend: $resource('/api/users/addFriend'),
-    },
-    userSlug = $stateParams.userSlug;
+    };
 
-    routes.users.get({slug: userSlug}, function(data) {
+    $scope.userId = $stateParams.id;
+
+    routes.users.get({id: $scope.userId}, function(data) {
       $scope.user = data;
     });
 
     $scope.addFriend = function () {
-      routes.addFriend.save({}, {slug: userSlug}, function(data) {
-        console.log(data);
-      });
+      BuddyService.addBuddy({id: $scope.userId, name: $scope.user.name});
     };
 
+    $scope.isBuddy = function(id){
+      return BuddyService.isBuddy(id);
+    };
   });

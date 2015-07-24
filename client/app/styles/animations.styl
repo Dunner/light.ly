@@ -1,4 +1,11 @@
-
+@keyframes pulsate {
+    0%, 100% {
+        width: 20%;
+    }
+    50% {
+        width: 5%;
+    }
+}
 
 // Hide style
 .dnr-menu.ng-cloak
@@ -7,22 +14,30 @@
   width 0px!important
   display block!important
 .titlenav.ng-hide
-  right calc( 100% - 100px )!important
+  right calc( 100% - 70px )!important
   display block!important
-.social-view.ng-hide
-  right 100%!important
-  display block!important
+
 .dnr-social-scroll.ng-hide
   display block!important
-  overflow hidden!important
+  & .social-view
+    right 100%!important
+    display block!important
 .social-banners.ng-hide
+  opacity 0!important
+  display block!important
+.dnr-social-mask.ng-hide
   opacity 0!important
   display block!important
 
 .gototop svg.rotate
-    transform rotate(0deg)!important
+  transform rotate(0deg)!important
 
 // Animate style
+.dnr-social-mask
+  transition opacity 0.3s ease
+.dnr-social-scroll
+  transition top 0.3s ease
+
 .dnr-menu, .dnr-slate, .dnr-social-nav-links li:before, .dnr-menu, .titlenav
   transition width 0.3s ease
 
@@ -88,42 +103,35 @@ p, b, h1, h2, h3, h4, h5, h6, span
 // Sidefeed
 
 .animate-switch.ng-animate
-  -webkit-transition all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s
-  transition all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s
-
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s
   position absolute
-  top 0
   left 0
-  right 0
-  bottom 0
 
 .animate-switch.ng-leave.ng-leave-active
-  left 100%
+  left: -100% !important;
   z-index 10
 
 .animate-switch.ng-enter
-  left 100%
+  left: 100% !important;
   z-index 11
 
 .animate-switch.ng-leave,
 .animate-switch.ng-enter.ng-enter-active
-  left 0px
+  left 0px !important;
   z-index 11
 
 
-.animate-switch-header.ng-animate {
-  transition:all ease .5s;
-  transition-delay .5s
-}
+
+.animate-switch-header.ng-animate 
+  transition: left cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s
 
 
-.animate-switch-header.ng-leave.ng-leave-active,
-.animate-switch-header.ng-enter {
-  top:10px;
-  opacity 0
-}
+.animate-switch-header.ng-leave.ng-leave-active
+  left -100% !important
+
+.animate-switch-header.ng-enter 
+  left 100% !important
+
 .animate-switch-header.ng-leave,
-.animate-switch-header.ng-enter.ng-enter-active {
-  top:-70px;
-  opacity 1
-}
+.animate-switch-header.ng-enter.ng-enter-active 
+  left:0px !important;

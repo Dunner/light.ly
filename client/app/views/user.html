@@ -7,7 +7,8 @@
         <h5 style="line-height: 40px; text-align: center">User</h5>
       </div>
       {{user.name}}
-      <button ng-click="addFriend()">Add friend</button>
+      <button ng-click="addFriend()" ng-show="!isBuddy(userId)">Add friend</button>
+      <button ng-click="MessageService.openChat(userId, user.name)">Message</button>
 
     </div>
   </li>

@@ -8,7 +8,7 @@
       </div>
 
       <div class="bg-cCont f-black" style="height:40px" ng-repeat="user in users" >
-        <h5 style="line-height: 40px; text-align: center"><a ui-sref="social.user({'userSlug': user.slug})">{{user.name}}</a></h5>
+        <h5 style="line-height: 40px; text-align: center"><a ui-sref="social.user({'id': user.id})">{{user.public.name}}</a></h5>
       </div>
 
     </div>

@@ -8,7 +8,7 @@
  * Controller of the lightApp
  */
 angular.module('lightApp')
-  .controller('SettingsCtrl', function ($scope, $rootScope, $resource, $filter, navtracker) {
+  .controller('SettingsCtrl', function ($scope, $rootScope, $resource, navtracker) {
 
     navtracker.title = 'Settings';
     navtracker.group = 'Social';
@@ -22,10 +22,8 @@ angular.module('lightApp')
 
     $scope.changeUsername = function() {
       var name = $scope.cUser.public.name;
-      var slug = $filter('slug')(name);
       var obj = {
-        name: name,
-        slug: slug
+        name: name
       };
       routes.changeName.save({}, obj ,function(data) {
         $rootScope.currentUser.public = data;

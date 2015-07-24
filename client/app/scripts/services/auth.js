@@ -14,7 +14,7 @@ angular.module('lightApp')
 
     //Tell node we're online
     if ($rootScope.currentUser !== null) {
-      socket.emit('new user', {name: $rootScope.currentUser.local.email, slug: $rootScope.currentUser.local.email});
+      socket.emit('new user', $rootScope.currentUser._id);
     }
     return {
 
@@ -27,7 +27,7 @@ angular.module('lightApp')
           rememberMe: user.rememberMe
         }, function(user) {
           $rootScope.currentUser = user;
-          socket.emit('new user', {name: user.local.email, slug: user.local.email});
+          socket.emit('new user', user._id);
           return cb();
         }, function(err) {
           return cb(err.data);

@@ -1,4 +1,3 @@
-/*global Hamster:false */
 'use strict';
 
 /**
@@ -17,7 +16,6 @@ angular.module('lightApp')
         var Vlelems, currentY, nextY,
           currentId = 0,
           currentIdY = 0,
-          scrolling = false,
           win = angular.element($window),
           winHeight = $window.innerHeight,
           winWidth = $window.innerWidth;
@@ -85,21 +83,6 @@ angular.module('lightApp')
         };
 
 
-        if(typeof Hamster !== undefined) {
-          new Hamster(element[0]).wheel(function(event, delta){
-            event.preventDefault();
-            if (!scrolling) {
-              if(delta>0) {
-                scope.up();
-              }
-              else {
-                scope.down();
-              }
-              scrolling = true;
-              setTimeout(function(){scope.$apply(); scrolling=false;},300);
-            }
-          });
-        }
 
       }
     };

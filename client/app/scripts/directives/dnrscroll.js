@@ -1,4 +1,3 @@
-/*global Hamster:false */
 'use strict';
 
 /**
@@ -94,18 +93,6 @@ angular.module('lightApp')
             updateScroll();
           },500);
         };
-
-        if(typeof Hamster !== undefined) {
-          new Hamster(element[0]).wheel(function(event, delta){
-            event.preventDefault();
-            if(delta>0) {
-              scope.up();
-            }
-            else {
-              scope.down();
-            }
-          });
-        }
 
       }
     };

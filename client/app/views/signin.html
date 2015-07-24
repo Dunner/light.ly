@@ -26,7 +26,7 @@
                      Please enter your email and password.
                   </p>
                   <p class="help-block">{{ errors.other }}</p>
-                  <button type="submit">Sign in</button>
+                  <button class="dnr-button" type="submit">Sign in</button>
                 </form>
                 Not registered? <a ui-sref="signup" class="link">Create an account.</a>
               </div>
@@ -40,7 +40,7 @@
                     <a href="/profile"><button>Enter</button></a>
                   </li>
                 </ul>
-                <button ng-click="$root.logout(); cUser = null; session=!session">Change account</button>
+                <button class="dnr-button" ng-click="$root.logout(); cUser = null; session=!session">Change account</button>
               </div>
             </div>
           </li>

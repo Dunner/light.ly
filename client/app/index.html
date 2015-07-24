@@ -12,6 +12,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -60,28 +61,40 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
-    <script src="bower_components/hamster/hamster.js"></script>
-    <script src="bower_components/hamsterjs/hamster.js"></script>
     <script src="bower_components/snap.svg/dist/snap.svg-min.js"></script>
     <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+    <script src="bower_components/phaser/build/phaser.js"></script>
+    <script src="bower_components/rangy/rangy-core.js"></script>
+    <script src="bower_components/rangy/rangy-classapplier.js"></script>
+    <script src="bower_components/rangy/rangy-highlighter.js"></script>
+    <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+    <script src="bower_components/rangy/rangy-serializer.js"></script>
+    <script src="bower_components/rangy/rangy-textrange.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+    <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/todo.js"></script>
-        <script src="scripts/services/todoservice.js"></script>
+        <script src="scripts/controllers/bulletin.js"></script>
+        <script src="scripts/services/bulletin.js"></script>
+        <script src="scripts/controllers/topics.js"></script>
+        <script src="scripts/controllers/topic.js"></script>
+        <script src="scripts/services/topic.js"></script>
         <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/controllers/message.js"></script>
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/socket.js"></script>
         <script src="scripts/services/user.js"></script>
+        <script src="scripts/services/message.js"></script>
         <script src="scripts/controllers/signin.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/directives/dnrpageslide.js"></script>
         <script src="scripts/services/scroll.js"></script>
-        <script src="scripts/directives/dnrstitch.js"></script>
         <script src="scripts/controllers/overview.js"></script>
         <script src="scripts/controllers/feed.js"></script>
         <script src="scripts/directives/dnrscroll.js"></script>
@@ -99,6 +112,7 @@
         <script src="scripts/directives/dnrcharacteritem.js"></script>
         <script src="scripts/directives/dnrdocument.js"></script>
         <script src="scripts/services/navtracker.js"></script>
+        <script src="scripts/directives/dnrgame.js"></script>
         <!-- endbuild -->
         <script src="/socket.io/socket.io.js"></script>
 

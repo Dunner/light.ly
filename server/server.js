@@ -2,6 +2,7 @@
 
   // modules =================================================
   var express        = require('express');
+  var async          = require('async');
   var fs             = require('fs');
   var app            = express();
   var port           = process.env.PORT || 80;
@@ -72,12 +73,7 @@
     secret: 'angular-fullstack secret',
     resave: true,
     saveUninitialized: true,
-    store: new mongoStore({
-      url: db.url,
-      collection: 'sessions',
-    }, function () {
-        console.log("db connection open");
-    })
+    db: mongoose.connection.db
   }));
 
   //use passport session

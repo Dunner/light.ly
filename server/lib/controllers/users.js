@@ -29,7 +29,7 @@ exports.all = function(req, res, next) {
     User.find(function (err, users) {
       if (err) return res.send(400);
       users.forEach(function(elem, index, array) {
-        userArray.push(elem.public);
+        userArray.push({id: elem._id, public: elem.public});
       });
       res.json(userArray);
     });
@@ -42,7 +42,7 @@ exports.all = function(req, res, next) {
 exports.single = function(req, res, next) {
   if (req.isAuthenticated()) {
     User.findOne({
-      'public.slug': req.params.slug
+      '_id': req.params.id
     }, function (err, user) {
       if (err) return res.send(400);
       res.json(user.public);
@@ -52,17 +52,30 @@ exports.single = function(req, res, next) {
   }
 };
 
-exports.buddy = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    User.findOne({
-      '_id': req.params.id
-    }, function (err, user) {
-      if (err) return res.send(400);
-      res.json(user.public);
+exports.buddies = function(req, res, next) {
+  var user = req.params.id,
+      friends = [],
+      realids = [];
+var x = 0;
+  User.findOne({
+    '_id': req.params.id
+  }, function (err, user) {
+    if (err) return res.send(400);
+    var friendIDs = user.public.friends;
+    for (var i = friendIDs.length - 1; i >= 0; i--) {
+      realids.push(friendIDs[i].id);
+    };
+    User.find({
+      '_id': { $in: realids  }
+    }, function (err, buddies) {
+      if (!err) {
+        buddies.forEach(function(elem, index, array) {
+          friends.push({_id: elem._id, name: elem.public.name});
+        });
+        res.json(friends);
+      }
     });
-  } else {
-    res.send(403);
-  }
+  });
 };
 
 /**
@@ -90,7 +103,7 @@ exports.changeName = function(req, res, next) {
 
 
 /**
- * Change name
+ * Change Password
  */
 
 exports.changePassword = function(req, res, next) {
@@ -113,14 +126,14 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
- * Change name
+ * Add buddy
  */
 
-exports.addFriend = function(req, res, next) {
-  var slug = String(req.body.slug);
+exports.befriend = function(req, res, next) {
+  var id = String(req.params.id);
   if (req.isAuthenticated()) {
     User.findOne({
-      'public.slug': slug
+      '_id': id
     }, function (err, friend) {
       if (err) return res.send(400);
 

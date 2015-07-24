@@ -10,8 +10,10 @@
  */
 angular
   .module('lightApp', [
-    'lightApp.TodoService',
+    'lightApp.BulletinService',
     'lightApp.BuddyService',
+    'lightApp.TopicService',
+    'lightApp.MessageService',
     'ui.router',
     'ngAnimate',
     'ngCookies',
@@ -19,6 +21,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'colorpicker.module',
+    'textAngular',
 
     'btford.socket-io'
   ])
@@ -47,7 +50,7 @@ angular
     $rootScope.logout = function() {
       Auth.logout();
       $rootScope.currentUser = null;
-      $state.go('signin');
+      window.location.href = window.location.origin;
     };
 
   }])
@@ -76,7 +79,12 @@ angular
       .state('social', {
         abstract: true,
         url: '',
-        templateUrl: 'views/social.html'
+        templateUrl: 'views/social.html',
+        // resolve: {
+        //   messages: ['BulletinService', function( BulletinService ) {
+        //     return BulletinService.queryDB().$promise;
+        //   }]
+        // }
       })
       .state('social.overview', {
         url: '/overview',
@@ -99,10 +107,21 @@ angular
         controller: 'UsersCtrl'
       })
       .state('social.user', {
-        url: '/user/{userSlug}',
+        url: '/user/{id}',
         templateUrl: 'views/user.html',
         controller: 'UserCtrl'
+      })
+      .state('social.topics', {
+        url: '/topic',
+        templateUrl: 'views/topics.html',
+        controller: 'TopicsCtrl'
+      })
+      .state('social.topic', {
+        url: '/topic/{slug}',
+        templateUrl: 'views/topic.html',
+        controller: 'TopicCtrl'
       });
+
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');

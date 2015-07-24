@@ -6,7 +6,7 @@
     <li>
       <svg dnr-charactercreator width="80%" height-"100%" viewBox="0 0 744 1052" id="charEdit"></svg>
       <div class="colors">
-        <button class="testbtn" style="position:Absolute; bottom:110%; left: 10%; width:80%; height:50px; line-height:50px" ng-click="save()"><h3>save</h3></button>
+        <button class="testbtn dnr-button" style="position:Absolute; bottom:110%; left: 10%; width:80%; height:50px; line-height:50px" ng-click="save()"><h3>save</h3></button>
         <ul class="colorSwap">
           <li ng-repeat="color in colors[palette]"
               ng-style="{ 'background' : color}"
@@ -48,14 +48,13 @@
 
 <ul class="double" style="margin-top:40px">
   <li>
-    <div class="bg-dCont pad20 f-white">
-      <div class="bg-cCont f-white" style="height:40px">
+    <div class="bg-dCont pad20">
+      <div class="bg-cCont" style="height:40px">
         <h5 style="line-height: 40px; text-align: center">Settings</h5>
       </div>
 
 
 
-      <div class="login">
         <form class="form" name="form" ng-submit="changeUsername(form)" novalidate>
 
         <ul class="double">
@@ -80,11 +79,9 @@
             </p>
           </li>
 
-          <h7>site/users/{{cUser.public.name | slug}}</h7>
-          <button type="submit">Change name</button>
+          <button class="dnr-button" type="submit">Change name</button>
 
         </form>
-      </div>
 
 
     </div>
