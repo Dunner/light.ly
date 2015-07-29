@@ -43,6 +43,7 @@ module.exports = function(app) {
   app.get('/api/users/all', users.all); // GET ALL USERS
   app.get('/api/users/single/:id', users.single); // GET SINGLE USER
   app.get('/api/users/buddies/:id', users.buddies); // GET BUDDIES
+  app.delete('/api/users/buddies/remove/:user/:buddy', users.buddyremove); // REMOVE BUDDY
   app.post('/api/users/buddies/add/:id', users.befriend); // ADD BUDDIE
   app.post('/api/users/changeName', users.changeName); // CHANGE NAME
   app.post('/api/users/changePassword', users.changePassword); // CHANGE PASSWORD

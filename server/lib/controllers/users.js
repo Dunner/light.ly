@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose'),
     passport = require('passport'),
+    async = require('async'),
     User = mongoose.model('User');
 
 /**
@@ -56,7 +57,7 @@ exports.buddies = function(req, res, next) {
   var user = req.params.id,
       friends = [],
       realids = [];
-var x = 0;
+  var x = 0;
   User.findOne({
     '_id': req.params.id
   }, function (err, user) {
@@ -75,6 +76,36 @@ var x = 0;
         res.json(friends);
       }
     });
+  });
+};
+
+exports.buddyremove = function(req, res, next) {
+  var id = req.params.user,
+      buddyid = req.params.buddy,
+      tempfriends = [];
+  var x = 0;
+  User.findOne({
+    '_id': id
+  }, function (err, user) {
+    if (err) return res.send(400);
+    if (user) {
+      async.each(user.public.friends,
+        function(buddy, callback) {
+          if (buddy.id !== buddyid) {
+            tempfriends.push(buddy);
+          }
+          callback();
+        },
+        function(err){
+          if (err) return res.json(500, err);
+          user.public.friends = tempfriends;
+          user.save(function(err){
+            if (err) return res.send(400);
+            res.json('test');
+          })
+        }
+      );
+    }
   });
 };
 

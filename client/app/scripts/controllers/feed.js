@@ -58,4 +58,12 @@ angular.module('lightApp')
       }
     };
 
+    $scope.activeDropdown= function(index){
+      if ($scope.activeDropdownIndex === index) {
+        $scope.activeDropdownIndex = -1;
+        return;
+      }
+      $scope.activeDropdownIndex = index;
+    };
+
   });

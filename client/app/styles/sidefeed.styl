@@ -1,9 +1,9 @@
 
 & .dnr-side-feed
   height 100%
-  height 100%
-  width 350px
+  width 400px
   position absolute
+  position bottom
   top 0px
   left 0px
   & .chatwindow
@@ -40,11 +40,12 @@
   & .dnr-switch-bar
     position absolute
     top 0px
-    right 0px
+    padding-top 70px
+    left 0px
     width 51px
-    height 100%
-    background $white
+    bottom 0px
     z-index 20
+    background #2d3338
     // box-shadow 20px 0px 19px -21px rgba(0,0,0,0.2)
     & ul.dnr-social-nav-links
       height 100%
@@ -54,7 +55,6 @@
         text-align center
         cursor pointer
         width 100%
-        border-bottom 1px solid $chromeWhite
         &:first-child
           //border-top 1px solid #3c3c3c
         &:before
@@ -68,6 +68,7 @@
           line-height 70px
           color color-medium
           overflow hidden
+          pointer-events none
         &:hover
           & h4
             & .svg-icon *
@@ -143,10 +144,10 @@
         //   border-bottom 1px solid color-medium
   & .dnr-flow-content
     position absolute
-    left 0px
-    top 0px
+    right 0px
+    top 70px
+    bottom 65px
     width calc( 100% - 50px )
-    height 100%
     text-align center
     //border-right 1px solid #2c2c2c
     // box-shadow inset -1px 0px 1px -1px #777
@@ -156,25 +157,32 @@
       top 0px
       width 100%
       height 70px
-      left 0px
-      z-index 20
+      right 0px
+      z-index 13
       & h4
         text-align left
         color #fff
         line-height 70px
         width calc( 100% - 40px )
         margin 0 auto
-        border-bottom 1px solid rgba(255,255,255,.3)
+        // border-bottom 1px solid rgba(255,255,255,.3)
         & .svg-icon *
             fill black
     & .dnr-flow-content-inside
-      overflow hidden
+      position absolute
+      top 0px
       width 100%
+      bottom 0px
+      right 0px
       height 100%
-      padding-top 70px
       & .scroll-indicator
+        position absolute
         background rgba(255,255,255,.3)
-        border-width 3px
+        border-width 0px
+        width 0px
+        top 0%
+        right 0%
+        height 25%
       & .dnr-flow-content-scroll
         position absolute
         right -20px
@@ -182,10 +190,10 @@
         bottom 50px
         left 0px
         overflow-y scroll
+        overflow-x hidden
       & .dnr-flow-vlelem
         height 50px
-        margin 0px 2%
-        width 96%
+        width 100%
         position relative
         border-style solid
         border-color rgba(0,0,0,0)

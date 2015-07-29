@@ -12,8 +12,34 @@ angular.module('lightApp')
     return function (scope, element, attrs) {
       attrs.disable = '';
 
+      scope.randomize = function() {
+        var options = [];
+        var tempLoad = '';
+        angular.forEach(scope.optionsTree, function(key){
+          angular.forEach(key.options, function(keyTwo){
+            options.push(keyTwo.select[0]);
+          });
+        });
+
+        Snap.load('data/character/combined.svg', function (image) {
+          for (var i = options.length - 1; i >= 0; i--) {
+            
+            var posibilities = image.selectAll('g[inkscape\\:label="#'+options[i]+'"]').items;
+            if (options[i] === 'hair') {console.log(posibilities);}
+            var randomchosen = posibilities[ Math.floor(Math.random() * posibilities.length)  ];
+            if (randomchosen !== undefined) {
+              tempLoad = tempLoad + randomchosen.node.id + ':# ';
+            }
+          }
+          buildCharacter(tempLoad.trim());
+        });
+
+      };
+      scope.randomize();
+      
+      //var load = 'face_slob:#d6ad94 ears_default:#d6ad94 eyes_default:#d6ad94 iris_default:#c4caff nose_default:# mouth_default:# mustache_slob:#212121 eyebrows_default:#292929 glasses_monocleL:#38ffef';
+
       var canvas = new Snap(element[0]);
-      var load = 'face_slob:#d6ad94 ears_default:#d6ad94 eyes_default:#d6ad94 iris_default:#c4caff nose_default:# mouth_default:# mustache_slob:#212121 eyebrows_default:#292929 glasses_monocleL:#38ffef';
 
       scope.paperdoll = {
         face: {},
@@ -38,6 +64,7 @@ angular.module('lightApp')
           scope.paperdoll[type].name = name;
           scope.paperdoll[type].color = slotInfo[1];
         });
+        paintCharacter(scope.paperdoll);
       }
 
       function paintCharacter(array) {
@@ -73,9 +100,6 @@ angular.module('lightApp')
           paintE(array.hair);
         });
       }
-
-      buildCharacter(load);
-      paintCharacter(scope.paperdoll);
       scope.select = function (array) {
         scope.toEdit = [];
         for (var i = array.length - 1; i >= 0; i--) {

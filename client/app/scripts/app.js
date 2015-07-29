@@ -50,7 +50,7 @@ angular
     $rootScope.logout = function() {
       Auth.logout();
       $rootScope.currentUser = null;
-      window.location.href = window.location.origin;
+      window.location.href = window.location.origin+'/signin';
     };
 
   }])

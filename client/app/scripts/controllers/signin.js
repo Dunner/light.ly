@@ -32,7 +32,7 @@ angular.module('lightApp')
           $scope.errors = {};
 
           if (!err) {
-            $state.go('social.overview');
+            $state.go('social.settings');
           } else {
             angular.forEach(err.errors, function(error, field) {
               form[field].$setValidity('mongoose', false);

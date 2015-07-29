@@ -1,6 +1,6 @@
 
 
-<div class="bg-dCont f-white" style="margin-top:40px" ng-controller="CharacterCtrl">
+<div class="bg-dCont f-white" ng-controller="CharacterCtrl"  style="margin-bottom:15px">
 
   <ul class="charEdit">
     <li>
@@ -40,13 +40,14 @@
           <svg dnr-characteritem="{{$index}}" viewBox="0 0 744 1052" id="invEdit"></svg>
           <h6 class="text-center">{{item.name}}</h6>
         </div>
+        <button class="testbtn dnr-button" style="position:Absolute; bottom:0%; right: 0%; width:60%; height:50px; line-height:50px" ng-click="randomize()"><h3>Randomize</h3></button>
       </div>
       <!-- <div ng-click="updateDoll('hair', 'bowl2')">new hair</div> -->
     </li>
   </ul>
 </div>
 
-<ul class="double" style="margin-top:40px">
+<ul class="double">
   <li>
     <div class="bg-dCont pad20">
       <div class="bg-cCont" style="height:40px">

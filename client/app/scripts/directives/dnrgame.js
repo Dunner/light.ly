@@ -15,7 +15,7 @@ angular.module('lightApp')
 
     function create() {
 
-      game.stage.backgroundColor = '#fff';
+      game.stage.backgroundColor = '#222';
 
       player = game.add.sprite(Math.floor(Math.random() * (game.width-60)) + 60  , game.height/2, createBlock(32,'black'));
       player.anchor.setTo(0.5, 0.5);

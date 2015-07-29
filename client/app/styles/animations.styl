@@ -7,7 +7,13 @@
     }
 }
 
+
+
 // Hide style
+.dnr-progress.ng-hide
+  opacity 0!important
+  display block!important
+  top 100%!important
 .dnr-menu.ng-cloak
   display none!important
 .dnr-menu.ng-hide
@@ -16,7 +22,9 @@
 .titlenav.ng-hide
   right calc( 100% - 70px )!important
   display block!important
-
+.dropdown-inside.ng-hide
+  width 0px!important
+  height 50px!important
 .dnr-social-scroll.ng-hide
   display block!important
   & .social-view
@@ -37,7 +45,10 @@
   transition opacity 0.3s ease
 .dnr-social-scroll
   transition top 0.3s ease
-
+  
+.dropdown-inside
+  transition width 0.1s ease, height 0.1s 0.1s ease
+  
 .dnr-menu, .dnr-slate, .dnr-social-nav-links li:before, .dnr-menu, .titlenav
   transition width 0.3s ease
 
@@ -105,33 +116,37 @@ p, b, h1, h2, h3, h4, h5, h6, span
 .animate-switch.ng-animate
   transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s
   position absolute
-  left 0
+  right 0
 
 .animate-switch.ng-leave.ng-leave-active
-  left: -100% !important;
+  right -100% !important
   z-index 10
-
+  & .dnr-flow-content-scroll
+    overflow hidden !important
+    
 .animate-switch.ng-enter
-  left: 100% !important;
+  right: 100% !important
   z-index 11
 
 .animate-switch.ng-leave,
 .animate-switch.ng-enter.ng-enter-active
-  left 0px !important;
+  right 0px !important
   z-index 11
+  & .dnr-flow-content-scroll
+    overflow hidden !important
 
 
 
 .animate-switch-header.ng-animate 
-  transition: left cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s
+  transition: right cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s
 
 
 .animate-switch-header.ng-leave.ng-leave-active
-  left -100% !important
+  right -100% !important
 
 .animate-switch-header.ng-enter 
-  left 100% !important
+  right 100% !important
 
 .animate-switch-header.ng-leave,
 .animate-switch-header.ng-enter.ng-enter-active 
-  left:0px !important;
+  right: 0px !important

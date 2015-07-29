@@ -12,4 +12,8 @@ angular.module('lightApp')
 
     $scope.buddies = BuddyService.getBuddies($rootScope.currentUser._id);
 
+    $scope.removeBuddy = function(id){
+    	BuddyService.removeBuddy(id);
+    };
+
   });

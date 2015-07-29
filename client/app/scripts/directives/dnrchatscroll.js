@@ -61,7 +61,7 @@ angular.module('lightApp')
             });
           }
           angular.element(Vlelems[scope.currentIdY]).css({
-            'border-left-width': '10px'
+            'border-left-width': '0px'
           });
         }
 

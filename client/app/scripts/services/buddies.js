@@ -28,6 +28,14 @@ angular.module('lightApp.BuddyService', [])
   		}
   	  return buddies;
   	};
+    factory.removeBuddy = function(id) {
+      for (var i = buddies.length - 1; i >= 0; i--) {
+        if (buddies[i]._id === id) {
+          buddies.splice(i,1);
+          return $resource('api/users/buddies/remove/:user/:buddy', { user: $rootScope.currentUser._id, buddy: id }).delete();
+        }
+      }
+    };
 
     factory.pushMessage = function(buddy) {
       buddies.push(buddy);

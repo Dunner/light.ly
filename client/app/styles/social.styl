@@ -1,101 +1,160 @@
 
-
 .dnr-cornice
-	height 8px
-	width 100%
-	background $accent
-
+  border-top 8px solid $accent
+  width 100%
+  background $accent
+  
+.dnr-mast
+  position absolute
+  top 8px
+  left 50px
+  right 0px
+  height 70px
+  background #3B3F44
+  z-index 21
+  
+.dnr-sleeper
+  position absolute
+  bottom 0px
+  left 50px
+  right 0px
+  height 65px
+  background #2D3338
+  border-top 10px solid #3B3F44
+  z-index 14
 
 .dnr-splitter
-	posititon relative
-	height calc( 100% - 8px )
-	width 100%
+  posititon relative
+  height calc( 100% - 8px )
+  width 100%
 
-	& .dnr-social
-		overflow hidden
-		position absolute
-		top 0px
-		left 350px
-		width calc( 100% - 350px )
-		background #fff // $white
-		height 100%
-		z-index 13
-		color black
+  & .dnr-social
+    overflow hidden
+    position absolute
+    top 70px
+    left 400px
+    bottom 65px
+    width calc( 100% - 400px )
+    background #222 // $white
+    z-index 13
+    color black
 
-		& .dnr-social-mask
-			position absolute
-			left 0
-			right 0
-			top 0
-			bottom 0
-				
-		& .dnr-social-scroll
-			pointer-events none
-			overflow-y scroll
-			position absolute
-			left 0
-			right 0
-			top 0
-			bottom 0
+    & .dnr-social-mask
+      position absolute
+      left 0
+      right 0
+      top 0
+      bottom 0
+        
+    & .dnr-social-scroll
+      pointer-events none
+      overflow-y scroll
+      position absolute
+      left 0
+      right 0
+      top 0
+      bottom 0
 
-			& .social-view
-				pointer-events auto
-				position absolute
-				top 85px
-				right 20%
-				width calc( 80% - 25px )
-				padding 15px
-				background #fff // $white
-				//padding-top 85px
-				min-height 100%
+      & .social-view
+        pointer-events auto
+        position absolute
+        top 0
+        right 0
+        left 0
+        padding 15px
+        background rgba(59,63,68,.6)
+        //background #ddd // $white
+        //padding-top 85px
+        min-height 100%
 
-			& .social-banners
-				position absolute
-				top 0px
-				right 0px
-				width 20%
-				padding 10px
+      & .social-banners
+        position absolute
+        top 0px
+        right 0px
+        width 20%
+        padding 10px
 
 
 .post-new
-		position relative
-		& .post-toggle
-				cursor pointer
-				height 120px
-				padding 40px
-				& img
-						float left
-						margin-right 20px
-				& .text-new
-						float left
-						text-transform uppercase
-						-webkit-font-smoothing antialiased
-						font-weight bold!important
-						font-weight 700
-						line-height 40px
-						font-size 14px
-				&::after
-						display block
-						content ''
-						clear both
-		& .post-form
-				opacity 1
+  position relative
+  & .post-toggle
+    cursor pointer
+    height 120px
+    padding 40px
+    & img
+      float left
+      margin-right 20px
+    & .text-new
+      float left
+      text-transform uppercase
+      -webkit-font-smoothing antialiased
+      font-weight bold!important
+      font-weight 700
+      line-height 40px
+      font-size 14px
+    &::after
+      display block
+      content ''
+      clear both
+  & .post-form
+    opacity 1
 
 .post
-		cursor pointer
-		position relative
-		min-height 120px
-		padding 10px 0
-		& h1
-				padding-bottom 10px
-				padding-right 60px
-		&:hover
-				background #f5f5f5
-		& .delete
-				cursor pointer
-				position absolute
-				top 0px
-				right 0px
-				& h6
-						line-height 20px
-						margin-bottom 0px
+  cursor pointer
+  position relative
+  min-height 120px
+  padding 10px 0
+  & h1
+    padding-bottom 10px
+    padding-right 60px
+  &:hover
+    background #f5f5f5
+  & .delete
+    cursor pointer
+    position absolute
+    top 0px
+    right 0px
+    & h6
+      line-height 20px
+      margin-bottom 0px
+      
+.dnr-progress
+  opacity 1
+  z-index 99
+  pointer-events none
+  background rgba(59,63,68,1)
+  transition opacity 1s ease, top 0s 1s ease
+  position absolute
+  left 0
+  top 0
+  right 0
+  bottom 0
+  & .bar
+    position absolute
+    background #333
+    max-width 100%
+    max-height 100%
+    &:nth-child(1)
+      transition width .3s linear .3s
+      width 0%
+      left 0
+      top 0
+      height 60px
+    &:nth-child(2)
+      transition height .3s linear .6s
+      height 0%
+      top 0
+      right 0
+      width 60px
+    &:nth-child(3)
+      transition width .3s linear .9s
+      width 0%
+      bottom 0
+      right 0
+      height 60px
+    &:nth-child(4)
+      transition height .3s linear 1.2s
+      height 0%
+      bottom 0
+      left 0
+      width 60px

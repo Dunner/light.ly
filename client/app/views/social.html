@@ -1,6 +1,26 @@
 
-
 <div class="dnr-cornice" ></div>
+<div class="dnr-mast">
+  <div class="mast-container">
+    <div class="mast-userarea">
+      {{$root.currentUser.public.name}}
+      <div class="icon"></div>
+    </div>
+    <div class="mast-navigation">
+      <ul>
+        <li>
+          <a ui-sref="social.overview">Overview</a>
+        </li>
+        <li>
+          Settings
+        </li>
+      </ul>
+    </div>
+    <div class="mast-tracker">
+    123
+    </div>
+  </div>
+</div>
 <div dnr-splitter class="dnr-splitter" >
   <div class="dnr-side-feed" ng-controller="FeedCtrl">
     <div class="dnr-switch-bar">
@@ -134,9 +154,21 @@
       <div dnr-scroll class="animate-switch dnr-flow-content-inside bg-lime" ng-switch-when="buddies" ng-controller="BuddiesCtrl">
         <div class="scroll-indicator"></div>
         <div class="dnr-flow-content-scroll" id="scroller">
-          <div class="dnr-flow-vlelem" ng-repeat="item in buddies">
+          <div class="dnr-flow-vlelem" ng-repeat="item in buddies" style="height:auto; padding: 0 5px 5px 60px; min-height: 50px">
             <div class="avatar" ng-show="isOnline(item._id)"></div>
-            <a ui-sref="social.user({'id': item._id})"><h6 style="line-height:50px;">{{item.name}}</h6></a>
+            <h6 style="line-height:25px; margin-bottom:0px!important; text-align: left;">
+              <span><a ui-sref="social.user({'id': item._id})">
+                {{item.name}}
+              </a></span>
+            </h6>
+            <div class="dropdown" ng-mouseleave="activeDropdown('-1')">
+              <div class="dropdown-toggle" ng-click="activeDropdown($index)" ng-class="(activeDropdownIndex === $index) ? 'active' : ''">..</div>
+              <ul class="dropdown-inside" ng-show="activeDropdownIndex === $index" style="height: 150px">
+                <li ng-click="activeDropdown('-1');"><div class="icon">A</div><div class="text">Aasdasd</div></li>
+                <li ng-click="activeDropdown('-1');"><div class="icon">F</div><div class="text">Fadadad</div></li>
+                <li ng-click="activeDropdown('-1'); removeBuddy(item._id)"><div class="icon f-red">-</div><div class="text">Remove friend</div></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -203,6 +235,8 @@
       </ul>
     </div> -->
     <div dnr-game></div>
+    <div dnr-quad-progress class="dnr-progress"></div>
+
     <div class="dnr-social-mask" ng-show="showE" ng-click="showE = false;"></div>
     <div class="dnr-social-scroll" ng-show="showE">
       <div class="social-view" ui-view=""></div>
@@ -210,6 +244,8 @@
     </div>
 
   </div>
+  <div class="dnr-sleeper"></div>
+
 </div>
 
 

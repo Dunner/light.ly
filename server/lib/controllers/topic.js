@@ -63,7 +63,6 @@ exports.show = function(req, res) {
               if (user) {
                 comment.user.name = user.public.name
               };
-                console.log(comment);
               callback();
             });
           },
