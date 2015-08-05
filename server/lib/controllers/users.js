@@ -71,7 +71,7 @@ exports.buddies = function(req, res, next) {
     }, function (err, buddies) {
       if (!err) {
         buddies.forEach(function(elem, index, array) {
-          friends.push({_id: elem._id, name: elem.public.name});
+          friends.push({_id: elem._id, name: elem.public.name, paperdoll: elem.public.paperdoll});
         });
         res.json(friends);
       }
@@ -155,6 +155,27 @@ exports.changePassword = function(req, res, next) {
     res.send(403);
   }
 };
+
+/**
+ * Update paperdoll
+ */
+
+exports.changePaperdoll = function(req, res, next) {
+  if (req.isAuthenticated()) {
+    User.findOne({
+      '_id': req.user._id
+    }, function (err, user) {
+      user.public.paperdoll = req.body;
+      user.save(function(err) {
+        if (err) return res.send(400);
+        res.json(user.public);
+      });
+    });
+  } else {
+    res.send(403);
+  }
+};
+
 
 /**
  * Add buddy

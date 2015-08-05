@@ -7,7 +7,7 @@
  * # dnrDocument
  */
 angular.module('lightApp')
-  .directive('dnrDocument', function ($window, scroll, navtracker, $rootScope) {
+  .directive('dnrDocument', function ($window, scroll, $rootScope) {
     return {
       restrict: 'EA',
       scope: true,
@@ -15,7 +15,6 @@ angular.module('lightApp')
 
         //Rerunable init
         function initDir() {
-          scope.navtracker = navtracker;
           scope.scrolled = false;
           scope.navigation = false;
           var topBar = element[0].children[0],

@@ -46,6 +46,7 @@ module.exports = function(app) {
   app.delete('/api/users/buddies/remove/:user/:buddy', users.buddyremove); // REMOVE BUDDY
   app.post('/api/users/buddies/add/:id', users.befriend); // ADD BUDDIE
   app.post('/api/users/changeName', users.changeName); // CHANGE NAME
+  app.post('/api/users/changePaperdoll', users.changePaperdoll); // UPDATE PAPERDOLL
   app.post('/api/users/changePassword', users.changePassword); // CHANGE PASSWORD
   app.get('/api/profile', middleware.auth, function(req, res) { // PROFILE
     res.send('user ' + req.user);

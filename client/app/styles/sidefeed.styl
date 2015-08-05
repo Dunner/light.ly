@@ -196,13 +196,25 @@
         width 100%
         position relative
         border-style solid
-        border-color rgba(0,0,0,0)
         margin-bottom 1px
         & h6
           color white
         &:hover
           cursor pointer
           background rgba(#fff,.3)
+      & .dnr-flow-chatline
+        padding 0 5px
+        min-height 22px
+        line-heightt 22px
+        width 100%
+        position relative
+        & h6
+          color white
+        &:hover
+          cursor pointer
+          background rgba(#fff,.3)
+        &:nth-child(odd)
+          background rgba(255,255,255,.1)
 
 .dnr-global-input
   position absolute
@@ -246,16 +258,10 @@
   position absolute
   overflow hidden
   left 5px
-  top 4px
-  width 40px
-  height 40px
-  border-radius 0 15px 15px 15px
-  border-top 2px solid
-  border-left 2px solid
-  border-color inherit
-  background url(http://static.fragbite.se/profilepictures/200/110959.jpg)
-  background-position 50%
-  background-size 100%
+  top 0px
+  bottom 0px
+  width 50px
+  // border-bottom 1px solid #fff
 
 
 .loader{

@@ -17,6 +17,7 @@ angular.module('lightApp')
 
     var routes = {
       changeName: $resource('/api/users/changeName'),
+      changePaperdoll: $resource('/api/users/changePaperdoll'),
       changePassword: $resource('/api/users/changePassword'),
     };
 
@@ -31,6 +32,12 @@ angular.module('lightApp')
       });
     };
 
+    $scope.changePaperdoll = function() {
+      routes.changePaperdoll.save({}, $scope.paperdoll ,function(data) {
+        console.log(data);
+        $rootScope.currentUser.public.paperdoll = $scope.paperdoll;
+      });
+    };
 
 
 

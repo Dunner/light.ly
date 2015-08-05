@@ -9,18 +9,12 @@
  */
 angular.module('lightApp')
   .factory('User', function ($resource) {
-    return $resource('/api/users/:id', {
+    return $resource('/api/users/single/:id', {
       id: '@id'
     }, { //parameters default
       update: {
         method: 'PUT',
         params: {}
-      },
-      get: {
-        method: 'GET',
-        params: {
-          id:'me'
-        }
       }
     });
   });

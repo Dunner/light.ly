@@ -43,7 +43,7 @@ angular.module('lightApp.BuddyService', [])
 
     factory.addBuddy = function(user) {
       return $resource('api/users/buddies/add/:id', { id: user.id }).save({}, function(){
-        buddies.push({id: user.id, name: user.name});
+        buddies.push({_id: user.id, name: user.name, paperdoll: user.paperdoll});
       });
     };
 

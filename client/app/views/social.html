@@ -4,10 +4,16 @@
   <div class="mast-container">
     <div class="mast-userarea">
       {{$root.currentUser.public.name}}
-      <div class="icon"></div>
+      <div class="icon">
+        <svg width="100%" height-"100%" dnr-avatar paperdoll="$root.currentUser.public.paperdoll" viewBox="90 150 550 1052"></svg>
+        
+      </div>
     </div>
     <div class="mast-navigation">
       <ul>
+        <li>
+          <a ng-click="$root.navtracker.toggle()">Game</a>
+        </li>
         <li>
           <a ui-sref="social.overview">Overview</a>
         </li>
@@ -134,10 +140,9 @@
       <div dnr-chatscroll class="animate-switch dnr-flow-content-inside bg-yellow" ng-switch-when="global" ng-controller="BulletinCtrl">
         <div class="scroll-indicator"></div>
         <div class="dnr-flow-content-scroll" id="scroller">
-          <div class="dnr-flow-vlelem" ng-repeat="item in messages.slice().reverse() | orderBy:'createdAt'" style="height:auto; padding: 0 5px 5px 60px; min-height: 50px">
-            <div class="avatar"></div>
+          <div class="dnr-flow-chatline" ng-repeat="item in messages.slice().reverse() | orderBy:'createdAt'">
             <h6 style="line-height:25px; margin-bottom:0px!important; text-align: left;">
-              <span><a ui-sref="social.user({'id': item.byid})">{{item.byname}}</a> {{item.createdAt | date:"'@' h:mm a"}}:</span><br/>
+              <span><a ui-sref="social.user({'id': item.byid})">{{item.byname}}</a> {{item.createdAt | date:"'@' h:mm a"}}:</span>
               {{item.title}}
             </h6> <!-- {{item.completed}} {{item.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}-->
           </div>
@@ -155,7 +160,9 @@
         <div class="scroll-indicator"></div>
         <div class="dnr-flow-content-scroll" id="scroller">
           <div class="dnr-flow-vlelem" ng-repeat="item in buddies" style="height:auto; padding: 0 5px 5px 60px; min-height: 50px">
-            <div class="avatar" ng-show="isOnline(item._id)"></div>
+            <div class="avatar" > <!-- ng-show="isOnline(item._id)" -->
+              <svg width="100%" height-"100%" dnr-avatar paperdoll="item.paperdoll" viewBox="90 150 550 1052"></svg>
+            </div>
             <h6 style="line-height:25px; margin-bottom:0px!important; text-align: left;">
               <span><a ui-sref="social.user({'id': item._id})">
                 {{item.name}}
@@ -203,7 +210,7 @@
     </div>
   </div>
 
-  <div class="dnr-social" dnr-document ng-init="showE = true">
+  <div class="dnr-social" dnr-document>
 <!--     <div class="titlenav" ng-hide="scrolled">
       <div class="toplinks">
         <h2>Whatsup</h2>
@@ -235,10 +242,10 @@
       </ul>
     </div> -->
     <div dnr-game></div>
-    <div dnr-quad-progress class="dnr-progress"></div>
+    <!-- <div dnr-quad-progress class="dnr-progress"></div> -->
 
-    <div class="dnr-social-mask" ng-show="showE" ng-click="showE = false;"></div>
-    <div class="dnr-social-scroll" ng-show="showE">
+    <div class="dnr-social-mask" ng-show="$root.navtracker.visible()" ng-click="$root.navtracker.hide();"></div>
+    <div class="dnr-social-scroll" ng-show="$root.navtracker.visible()">
       <div class="social-view" ui-view=""></div>
 
     </div>

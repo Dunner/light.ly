@@ -1,12 +1,14 @@
 
 
-<div class="bg-dCont f-white" ng-controller="CharacterCtrl"  style="margin-bottom:15px">
+
+
+<div class="bg-dCont f-white" dnr-paperdoll style="margin-bottom:15px">
 
   <ul class="charEdit">
     <li>
-      <svg dnr-charactercreator width="80%" height-"100%" viewBox="0 0 744 1052" id="charEdit"></svg>
+      <svg width="80%" height-"100%" viewBox="0 0 744 1052" id="paperdoll"></svg>
       <div class="colors">
-        <button class="testbtn dnr-button" style="position:Absolute; bottom:110%; left: 10%; width:80%; height:50px; line-height:50px" ng-click="save()"><h3>save</h3></button>
+        <button class="testbtn dnr-button" style="position:Absolute; bottom:110%; left: 10%; width:80%; height:50px; line-height:50px" ng-click="changePaperdoll()"><h3>save</h3></button>
         <ul class="colorSwap">
           <li ng-repeat="color in colors[palette]"
               ng-style="{ 'background' : color}"
@@ -42,10 +44,16 @@
         </div>
         <button class="testbtn dnr-button" style="position:Absolute; bottom:0%; right: 0%; width:60%; height:50px; line-height:50px" ng-click="randomize()"><h3>Randomize</h3></button>
       </div>
-      <!-- <div ng-click="updateDoll('hair', 'bowl2')">new hair</div> -->
     </li>
   </ul>
 </div>
+
+
+
+
+
+
+
 
 <ul class="double">
   <li>

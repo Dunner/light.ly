@@ -25,8 +25,9 @@ angular
 
     'btford.socket-io'
   ])
-  .run(   ['$rootScope', '$state', '$window', 'Auth', '$timeout',
-  function ($rootScope,   $state,   $window,   Auth,   $timeout) {
+  .run(   ['$rootScope', '$state', '$window', 'Auth', '$timeout', 'navtracker',
+  function ($rootScope,   $state,   $window,   Auth,   $timeout,   navtracker) {
+    $rootScope.navtracker = navtracker;
     //Global vars
     $rootScope.API = 'http://torst1.myftp.org:80/api/';
 
@@ -35,6 +36,7 @@ angular
       $window.scrollTo(0, 0);
     });
     $rootScope.$on('$stateChangeSuccess', function () {
+      navtracker.show();
       $window.scrollTo(0, 0);
     });
     $rootScope.$on('$stateChangeError', function () {
@@ -109,6 +111,11 @@ angular
       .state('social.user', {
         url: '/user/{id}',
         templateUrl: 'views/user.html',
+        resolve: {
+          user: ['User', '$stateParams', function( User, $stateParams ) {
+            return User.get({id: $stateParams.id}).$promise;
+          }]
+        },
         controller: 'UserCtrl'
       })
       .state('social.topics', {
