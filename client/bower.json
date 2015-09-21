@@ -15,7 +15,7 @@
     "angular-socket-io": "~0.6.0",
     "snap.svg": "~0.3.0",
     "angular-bootstrap-colorpicker": "~3.0.8",
-    "phaser": "~2.3.0",
+    "phaser": "~2.4.3",
     "textAngular": "~1.4.2"
   },
   "devDependencies": {
